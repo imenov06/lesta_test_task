@@ -67,5 +67,3 @@
 | ...     | ...   | ...   |
 
 
-# lesta_test_task
-# lesta_test_task
