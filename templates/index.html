@@ -15,7 +15,7 @@
     <form action="http://127.0.0.1:8000/frontend/upload" method="post" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="file1" class="form-label">Выберете файл 1:</label>
-            <input type="file" class="form-control" id="file1" name="files" multiple
+            <input type="file" class="form-control" id="file1" name="files"
                    accept=".docx, .txt, .csv, .json, .xml, .html">
             <small class="form-text text-muted">*обязательно</small>
         </div>
@@ -24,7 +24,7 @@
         <div class="mb-3">
             <label for="file2" class="form-label">Выберете файл 2:</label>
             <div class="input-group">
-                <input type="file" class="form-control" id="file2" name="files" multiple
+                <input type="file" class="form-control" id="file2" name="files"
                        accept=".docx, .txt, .csv, .json, .xml, .html">
                 <button type="button" class="btn btn-danger" onclick="removeFileInput(this)">Удалить</button>
             </div>
@@ -53,7 +53,7 @@
             div.innerHTML = `
                     <label for="file${fileCount}" class="form-label">Выберете файл ${fileCount} :</label>
                     <div class="input-group">
-                        <input type="file" class="form-control" id="file${fileCount}" name="files" multiple accept=".docx, .txt, .csv, .json, .xml, .html">
+                        <input type="file" class="form-control" id="file${fileCount}" name="files" accept=".docx, .txt, .csv, .json, .xml, .html">
                         <button type="button" class="btn btn-danger" onclick="removeFileInput(this)">Удалить</button>
                     </div>
                     <small class="form-text text-muted">*опционально</small>
