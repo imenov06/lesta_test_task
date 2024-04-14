@@ -6,7 +6,7 @@ from config import data_storage
 from tf_idf.helper import save_data_in_storage
 
 router = APIRouter(
-    prefix="/frontend",
+    prefix="",
     tags=['страница загрузки файлов']
 )
 templates = Jinja2Templates(directory="templates")
