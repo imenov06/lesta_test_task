@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TF-IDF Table</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="mb-5">
+        <h1 class="text-center mb-4">TF-IDF Таблицы</h1>
+        <h2 class="text-left mb-1">Оглавление:</h2>
+        <ul id="tableNavigation" class="list-group list-group-flush">
+            {%for t in range(count_tables)%}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <a class="nav-link text-primary" href="#table{{t+1}}">Таблица для файла №{{t+1}}</a>
+                <span class="badge bg-primary rounded-pill">№{{t+1}}</span>
+            </li>
+            {%endfor%}
+        </ul>
+    </div>
+
+    {%for t in range(count_tables)%}
+    <h4 id="table{{t+1}}">Таблица для файла №{{t+1}}</h4>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">Слово</th>
+                <th scope="col">TF</th>
+                <th scope="col">IDF</th>
+            </tr>
+            </thead>
+            <tbody>
+            {%for k, v in tables_data[t].items()%}
+            <tr>
+                <td>{{k}}</td>
+                <td>{{v[0]}}</td>
+                <td>{{v[1]}}</td>
+            </tr>
+            {%endfor%}
+            </tbody>
+        </table>
+    </div>
+    {%endfor%}
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

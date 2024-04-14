@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload File</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Страница загрузки файлов</h1>
+    <form action="http://127.0.0.1:8000/frontend/upload" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="file1" class="form-label">Выберете файл 1:</label>
+            <input type="file" class="form-control" id="file1" name="files" multiple
+                   accept=".docx, .txt, .csv, .json, .xml, .html">
+            <small class="form-text text-muted">*обязательно</small>
+        </div>
+
+
+        <div class="mb-3">
+            <label for="file2" class="form-label">Выберете файл 2:</label>
+            <div class="input-group">
+                <input type="file" class="form-control" id="file2" name="files" multiple
+                       accept=".docx, .txt, .csv, .json, .xml, .html">
+                <button type="button" class="btn btn-danger" onclick="removeFileInput(this)">Удалить</button>
+            </div>
+            <small class="form-text text-muted">**опционально, но рекомендуется</small>
+        </div>
+        <div id="additionalFiles"></div>
+
+        <div class="d-flex justify-content-between mb-3">
+            <button type="button" class="btn btn-secondary me-3" onclick="addFileInput()">Добавить файл</button>
+            <button type="submit" class="btn btn-primary">Готово</button>
+        </div>
+    </form>
+</div>
+
+<!-- Bootstrap 5 JS and Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    let fileCount = 2; // Starting with 2 file inputs
+
+    function addFileInput() {
+        if (fileCount < 10) {
+            fileCount++;
+            let div = document.createElement('div');
+            div.className = 'mb-3';
+            div.innerHTML = `
+                    <label for="file${fileCount}" class="form-label">Выберете файл ${fileCount} :</label>
+                    <div class="input-group">
+                        <input type="file" class="form-control" id="file${fileCount}" name="files" multiple accept=".docx, .txt, .csv, .json, .xml, .html">
+                        <button type="button" class="btn btn-danger" onclick="removeFileInput(this)">Удалить</button>
+                    </div>
+                    <small class="form-text text-muted">*опционально</small>
+                `;
+            document.getElementById('additionalFiles').appendChild(div);
+        } else {
+            alert('You can upload up to 10 files.');
+        }
+    }
+
+    function removeFileInput(button) {
+        let div = button.parentElement.parentElement;
+        div.parentElement.removeChild(div);
+        fileCount--;
+    }
+</script>
+</body>
+
+</html>
