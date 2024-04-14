@@ -12,7 +12,7 @@ router = APIRouter(
 templates = Jinja2Templates(directory="templates")
 
 
-@router.get("/upload")
+@router.get("/")
 async def get_upload_page(request: Request):
     return templates.TemplateResponse(name="index.html", context={"request": request})
 
